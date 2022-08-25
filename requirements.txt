@@ -36,6 +36,7 @@ lazy-object-proxy==1.7.1
 lxml==4.9.1
 mccabe==0.7.0
 -e git+https://github.com/NVIDIA/Megatron-LM.git@42c1cf4279acea5a554500dcb552211f44cbec45#egg=megatron_lm
+mock==4.0.3
 mypy==0.971
 mypy-extensions==0.4.3
 nodeenv==1.7.0
@@ -71,6 +72,7 @@ sentencepiece==0.1.97
 six==1.16.0
 -e git+https://github.com/facebookresearch/stopes.git@3d68da1aeddc32aa87284fde19290472645d0a0d#egg=stopes
 submitit==1.4.5
+subword-nmt==0.3.8
 tabulate==0.8.10
 threadpoolctl==3.1.0
 toml==0.10.2
