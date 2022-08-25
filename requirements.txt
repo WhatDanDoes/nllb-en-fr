@@ -18,6 +18,7 @@ Cython==0.29.32
 dill==0.3.5.1
 distlib==0.3.5
 docutils==0.19
+et-xmlfile==1.1.0
 -e git+https://github.com/facebookresearch/fairscale.git@2ec5c5e141e7ccac88247244306d975b423d95ce#egg=fairscale
 -e git+https://github.com/facebookresearch/fairseq.git@f87107c321c46b2263a988a006460b8af4e7c790#egg=fairseq
 filelock==3.8.0
@@ -40,6 +41,7 @@ mypy-extensions==0.4.3
 nodeenv==1.7.0
 numpy==1.23.2
 omegaconf==2.2.2
+openpyxl==3.0.10
 packaging==21.3
 pathspec==0.9.0
 Pillow==9.2.0
@@ -79,6 +81,7 @@ torch==1.10.1+cu113
 torchaudio==0.10.1+cu113
 torchvision==0.11.2+cu113
 tqdm==4.64.0
+translate-toolkit==3.7.2
 types-emoji==2.0.1
 typing-extensions==4.3.0
 urllib3==1.26.12
