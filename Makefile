@@ -1,2 +1,2 @@
 test:
-	pytest
+	pytest tests --disable-warnings
