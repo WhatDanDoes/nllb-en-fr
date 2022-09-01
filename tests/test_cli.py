@@ -88,3 +88,14 @@ def test_translate():
     assert result.stdout == f"Bonjour{linesep}"
     assert result.exit_code == 0
 
+
+def test_stderr():
+    """
+    The NLBB stuff spits out a bunch of junk we don't need to see
+    """
+    result = shell('python -m en_to_fr Bye')
+
+    assert result.stderr == f""
+    assert result.exit_code == 0
+
+

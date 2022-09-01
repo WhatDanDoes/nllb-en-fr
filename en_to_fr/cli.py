@@ -2,7 +2,6 @@
 CLI for English-to-French NLLB translator
 """
 import argparse
-
 from . import __version__, command
 
 
@@ -23,8 +22,8 @@ def main():
     """CLI for English-to-French NLLB translator"""
 
     args = parse_arguments()
-
     input_string = ' '.join(args.input)
+
     output_string = command.translate(input_string)
 
     print(output_string)
