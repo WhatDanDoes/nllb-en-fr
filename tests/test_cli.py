@@ -13,6 +13,7 @@ from os import linesep
 
 import en_to_fr.cli
 import pytest
+import json
 
 from cli_test_helpers import ArgvContext, shell
 
@@ -22,7 +23,6 @@ def test_runas_module():
    Can this package be run as a Python module?
    """
    result = shell('python -m en_to_fr --help')
-   #result = shell('python -m en-to-fr --help')
    assert result.exit_code == 0
 
 
@@ -83,8 +83,12 @@ def test_translate():
     """
     Does this thing actually translate a sentence from English to French
     """
-    result = shell('python -m en_to_fr Hello')
+    result = shell('python -m en_to_fr --phrase Hello')
+    assert result.stdout == f"Bonjour{linesep}"
+    assert result.exit_code == 0
 
+    # Shorthand -p option
+    result = shell('python -m en_to_fr -p Hello')
     assert result.stdout == f"Bonjour{linesep}"
     assert result.exit_code == 0
 
@@ -93,9 +97,26 @@ def test_stderr():
     """
     The NLBB stuff spits out a bunch of junk we don't need to see
     """
-    result = shell('python -m en_to_fr Bye')
+    result = shell('python -m en_to_fr --phrase Bye')
 
     assert result.stderr == f""
+    assert result.stdout == f"Au revoir{linesep}"
+    assert result.exit_code == 0
+
+def test_process_json():
+    """
+    Take an arbitrary JSON file and attempt translation on all values
+    """
+    result = shell('python -m en_to_fr --json tests/data/book.json')
+
+    expected_json = '{"book": "Mon livre", "chapters": [{"chapter": "1", "verses": [{"verse": "1", "text": "C\'est mon livre."}, {"verse": "2", "text": "De quoi s\'agit-il?"}]}]}'
+    assert result.stderr == f""
+    assert result.stdout.strip() == expected_json
+
+    result_json = json.loads(expected_json)
+    std_out_json = json.loads(result.stdout)
+    assert result_json == std_out_json
+
     assert result.exit_code == 0
 
 

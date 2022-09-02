@@ -1,5 +1,6 @@
 import re
 import html
+import json
 
 #
 # From https://stackoverflow.com/questions/11130156/suppress-stdout-stderr-print-from-python-functions
@@ -29,7 +30,6 @@ with suppress_stdout_stderr():
     bpe_codes='bpecodes'
   )
 
-
 def translate(phrase):
   """
   Translate a phrase from English to French
@@ -55,5 +55,38 @@ def translate(phrase):
     out = re.sub(r" @-@ ", "-", out)
 
     return out
+
+
+def translate_json(filepath):
+  """
+  Take an ad-hoc JSON file and translate its contents
+  """
+
+  with open(filepath) as f:
+    data = json.load(f)
+
+  return recurse_keys(data)
+
+
+def recurse_keys(current_obj):
+  """
+  Take the JSON, traverse it all keys, translate whatever values you find
+  """
+  if isinstance(current_obj, dict):
+    # Another dictionary to search through
+    for k,v in current_obj.items():
+
+      if (isinstance(current_obj[k], dict) or isinstance(current_obj[k], list)):
+        recurse_keys(current_obj[k])
+      else:
+        current_obj[k] = translate(v)
+  elif isinstance(current_obj, list):
+    for i in current_obj:
+      if isinstance(i, dict) or isinstance(i, list):
+        recurse_keys(i)
+      else:
+        current_obj[k] = recurse_keys(i)
+
+  return json.dumps(current_obj)
 
 

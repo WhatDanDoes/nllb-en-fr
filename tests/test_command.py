@@ -1,8 +1,3 @@
-# From https://www.youtube.com/watch?v=6tNS--WetLI
-
-#import sys
-#import os
-#sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../en_to_fr")
 
 import pytest
 import en_to_fr.command
@@ -24,4 +19,10 @@ def test_translate_sentence():
   assert en_to_fr.command.translate("Do you want to come this weekend?") == "Voulez-vous venir cette fin de semaine?"
 
 
+def test_translate_json_file():
+  """
+  Take an ad-hoc JSON file and translate its contents
+  """
+#  assert en_to_fr.command.translate_json('tests/data/book.json') == '{"book": "Mon livre","chapters": [{"chapter": "1", "verses": [{"verse": "1", "text": "C\'est mon livre."}, {"verse": "2", "text": "De quoi s\'agit-il?"}]'
 
+  assert en_to_fr.command.translate_json('tests/data/book.json') == "{'book': 'Mon livre','chapters': [{'chapter': '1', 'verses': [{'verse': '1', 'text': 'C\'est mon livre.'}, {'verse': '2', 'text': 'De quoi s\'agit-il?'}]}]}"

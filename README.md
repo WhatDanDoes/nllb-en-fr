@@ -153,3 +153,9 @@ This is another neat one:
 
 https://towardsdatascience.com/transformers-in-computer-vision-farewell-convolutions-f083da6ef8ab
 
+
+# Testing
+
+```
+make test
+```
