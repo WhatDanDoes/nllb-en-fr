@@ -61,7 +61,6 @@ def translate_json(filepath):
   """
   Take an ad-hoc JSON file and translate its contents
   """
-
   with open(filepath) as f:
     data = json.load(f)
 

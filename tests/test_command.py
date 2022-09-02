@@ -23,6 +23,8 @@ def test_translate_json_file():
   """
   Take an ad-hoc JSON file and translate its contents
   """
-#  assert en_to_fr.command.translate_json('tests/data/book.json') == '{"book": "Mon livre","chapters": [{"chapter": "1", "verses": [{"verse": "1", "text": "C\'est mon livre."}, {"verse": "2", "text": "De quoi s\'agit-il?"}]'
+  # Also defined in test_cli. Super hokey
+  expected_json = '{"book": "Mon livre", "chapters": [{"chapter": "1", "verses": [{"verse": "1", "text": "C\'est mon livre."}, {"verse": "2", "text": "De quoi s\'agit-il?"}]}]}'
 
-  assert en_to_fr.command.translate_json('tests/data/book.json') == "{'book': 'Mon livre','chapters': [{'chapter': '1', 'verses': [{'verse': '1', 'text': 'C\'est mon livre.'}, {'verse': '2', 'text': 'De quoi s\'agit-il?'}]}]}"
+  result = en_to_fr.command.translate_json('tests/data/book.json')
+  assert result == expected_json
