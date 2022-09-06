@@ -30,12 +30,29 @@ with suppress_stdout_stderr():
     bpe_codes='bpecodes'
   )
 
+
+#
+# From https://stackoverflow.com/questions/379906/how-do-i-parse-a-string-to-a-float-or-int
+#
+# Don't translate standalone parsable floats
+#
+def is_float(value):
+  try:
+    float(value)
+    return True
+  except:
+    return False
+
 def translate(phrase):
   """
   Translate a phrase from English to French
   """
-
   with suppress_stdout_stderr():
+
+    # Skip standalone float-parsable digits
+    if is_float(phrase):
+      return phrase
+
     out = en2fr.translate(phrase)
 
     # The `translate` method produces escaped HTML strings

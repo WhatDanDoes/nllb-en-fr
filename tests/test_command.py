@@ -1,5 +1,6 @@
 
 import pytest
+import json
 import en_to_fr.command
 
 def test_translate_single_word():
@@ -28,3 +29,29 @@ def test_translate_json_file():
 
   result = en_to_fr.command.translate_json('tests/data/book.json')
   assert result == expected_json
+
+def test_is_float():
+  """
+  Determine if the provided value is numeric (parsable as a float)
+  """
+  assert en_to_fr.command.is_float('15') == True
+  assert en_to_fr.command.is_float('26') == True
+  assert en_to_fr.command.is_float('32 blue') == False
+  assert en_to_fr.command.is_float('Forty two') == False
+
+
+def test_digit_skipping():
+  """
+  NLLB will try to translate digits, which doesn't always work out. This tests
+  to ensure standalone (float parsable) digit values are skipped. A few of the
+  most problematic are tested below
+  """
+  result = en_to_fr.command.translate_json('tests/data/digits.json')
+  data = json.loads(result)
+
+  assert data['chapters'][0]['chapter'] == '15'
+  assert data['chapters'][1]['chapter'] == '26'
+  assert data['chapters'][2]['chapter'] == '132'
+
+
+
