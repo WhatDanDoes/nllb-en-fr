@@ -61,7 +61,7 @@ def translate(phrase):
     # The NLLB stuff puts unwanted spaces between punctuation and words
     #
     # From https://stackoverflow.com/a/35141903
-    fix_spaces = re.compile(r'\s*([?!.,]+(?:\s+[?!.,]+)*)\s*')
+    fix_spaces = re.compile(r'\s*([?!.,:;]+(?:\s+[?!.,:;]+)*)\s*')
     out = fix_spaces.sub(lambda x: "{} ".format(x.group(1).replace(" ", "")), out).strip()
 
     # Fix apostrophes

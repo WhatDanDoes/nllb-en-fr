@@ -18,6 +18,8 @@ def test_translate_sentence():
   assert en_to_fr.command.translate("This is a test") == "Il s'agit d'un test"
   assert en_to_fr.command.translate("I walked up to the lake") == "J'ai marché jusqu'au lac"
   assert en_to_fr.command.translate("Do you want to come this weekend?") == "Voulez-vous venir cette fin de semaine?"
+  assert en_to_fr.command.translate("And the earth was without form, and void;") == "Et la terre était sans forme, et nulle;"
+  assert en_to_fr.command.translate("And God said, Let there be light: and there was light.") == "Dieu a dit: Que la lumière soit, et la lumière était."
 
 
 def test_translate_json_file():
