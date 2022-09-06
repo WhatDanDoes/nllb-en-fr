@@ -166,6 +166,12 @@ Testing a single test:
 pytest tests/test_command.py -k 'test_digit_skipping'
 ```
 
+For future me, this is causing some momentary frustration. The module has to be installed before it'll be properly tested. Changes made to the file don't register for some reason:
+
+```
+pip install .
+```
+
 # Processing a directory of JSON
 
 ```
