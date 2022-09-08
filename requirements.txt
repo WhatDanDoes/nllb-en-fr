@@ -19,6 +19,7 @@ Cython==0.29.32
 dill==0.3.5.1
 distlib==0.3.5
 docutils==0.19
+en-to-fr==0.0.0
 et-xmlfile==1.1.0
 -e git+https://github.com/facebookresearch/fairscale.git@2ec5c5e141e7ccac88247244306d975b423d95ce#egg=fairscale
 -e git+https://github.com/facebookresearch/fairseq.git@f87107c321c46b2263a988a006460b8af4e7c790#egg=fairseq
@@ -51,6 +52,7 @@ platformdirs==2.5.2
 pluggy==1.0.0
 portalocker==2.5.1
 pre-commit==2.20.0
+protobuf==3.20.1
 py==1.11.0
 pybind11==2.10.0
 pycparser==2.21
@@ -67,6 +69,7 @@ regex==2022.8.17
 requests==2.28.1
 s3transfer==0.6.0
 sacrebleu==2.2.0
+sacremoses==0.0.53
 scikit-learn==0.24.1
 scipy==1.6.1
 sentencepiece==0.1.97
@@ -75,6 +78,7 @@ six==1.16.0
 submitit==1.4.5
 subword-nmt==0.3.8
 tabulate==0.8.10
+tensorboardX==2.5.1
 threadpoolctl==3.1.0
 toml==0.10.2
 tomli==2.0.1
