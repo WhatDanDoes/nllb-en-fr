@@ -175,14 +175,6 @@ pip install .
 # Processing a directory of JSON
 
 ```
-for X in data/*.json; do en_to_fr --json "$X" > ../out/"$X"; done
-```
-
-```
-find data/*.json -maxdepth 1 -type f -exec en_to_fr --json {} \; > out/{}
-```
-
-```
 mkdir out/data
 find data -name "*.json" -type f -exec sh -c 'en_to_fr --json {} > out/{}' \;
 ```
