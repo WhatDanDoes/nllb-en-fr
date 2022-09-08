@@ -23,6 +23,7 @@ en-to-fr==0.0.0
 et-xmlfile==1.1.0
 -e git+https://github.com/facebookresearch/fairscale.git@2ec5c5e141e7ccac88247244306d975b423d95ce#egg=fairscale
 -e git+https://github.com/facebookresearch/fairseq.git@f87107c321c46b2263a988a006460b8af4e7c790#egg=fairseq
+fastBPE==0.1.0
 filelock==3.8.0
 flit==3.7.1
 flit-core==3.7.1
