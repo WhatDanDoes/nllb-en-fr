@@ -144,7 +144,7 @@ Obtained thusly:
 python ./env/src/fairseq/examples/nllb/data/download_parallel_corpora.py --directory ./models
 ```
 
-### Neural Machine Translation
+### Neural Machine Translation Models
 
 As per https://github.com/facebookresearch/fairseq/tree/nllb/examples/translation
 
