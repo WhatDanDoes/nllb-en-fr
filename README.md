@@ -3,15 +3,15 @@ nllb-en-fr
 
 This project leverages the software developed by Meta's _No Language Left Behind_ initiative: https://github.com/facebookresearch/fairseq/tree/nllb.
 
-I wrapped the Meta software in a `python` command-line script and used it to the translate the King James Version of the Holy Bible from 1611 into modern French, German, and Russian using the same publicly-available pre-trained models as the NLLB researchers. The `python` script and tests are geared for French. If you're interested in repeating the German and Russian translations, these will require manual ad hoc adjustments to the code in `en_to_fr/command.py`.
+I wrapped the Meta software in a `python` commandline script and used it to translate the King James Version of the Holy Bible (published 1611) into modern French, German, and Russian using the same publicly-available pre-trained models as the NLLB researchers. The `python` script and tests are geared for French. If you're interested in repeating the German and Russian translations, these will require manual ad hoc adjustments to the code in `en_to_fr/command.py`.
 
-Heads up! Regular `python` developers may find this all a bit cringy. This project was the first time I'd used `python` in ten years. I am still not really familiar with the tools and culture of the `python` ecosystem.
+Heads up! Regular `python` developers may find this all a bit cringy. I hadn't used `python` in ten years prior to this. I am still not really familiar with the tools and culture of the `python` ecosystem.
 
-_Note to self:_ if you're trying to get the tests to pass, make sure you reinstall the module after every change: `pip install .` (super hokey, I know. What's the right way to do this?).
+_Note to self:_ if you're trying to get the tests to pass, make sure you reinstall the module after every change: `pip install .` (Super hokey. What's the right way to do this?).
 
 # Setup
 
-Set up instructions have been adapted from: https://github.com/facebookresearch/fairseq/blob/nllb/INSTALL.md
+The hardest part of all this is getting the NLLB stuff to work. Set up instructions have been adapted from: https://github.com/facebookresearch/fairseq/blob/nllb/INSTALL.md
 
 ## Virtual Environments
 
