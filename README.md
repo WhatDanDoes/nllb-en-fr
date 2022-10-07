@@ -1,7 +1,13 @@
-en-fr-convolution
-=================
+nllb-en-fr
+==========
 
-This project leverages the software developed by Facebook's _No Language Left Behind_ initiative: https://github.com/facebookresearch/fairseq/tree/nllb
+This project leverages the software developed by Meta's _No Language Left Behind_ initiative: https://github.com/facebookresearch/fairseq/tree/nllb.
+
+I wrapped the Meta software in a `python` command-line script and used it to the translate the King James Version of the Holy Bible from 1611 into modern French, German, and Russian using the same publicly-available pre-trained models as the NLLB researchers. The `python` script and tests are geared for French. If you're interested in repeating the German and Russian translations, these will require manual ad hoc adjustments to the code in `en_to_fr/command.py`.
+
+Heads up! Regular `python` developers may find this all a bit cringy. This project was the first time I'd used `python` in ten years. I am still not really familiar with the tools and culture of the `python` ecosystem.
+
+_Note to self:_ if you're trying to get the tests to pass, make sure you reinstall the module after every change: `pip install .` (super hokey, I know. What's the right way to do this?).
 
 # Setup
 
@@ -87,7 +93,6 @@ python setup.py build_ext --inplace
 cd ..
 ```
 
-
 #### Stopes
 
 ```
@@ -153,7 +158,6 @@ This is another neat one:
 
 https://towardsdatascience.com/transformers-in-computer-vision-farewell-convolutions-f083da6ef8ab
 
-
 # Testing
 
 ```
@@ -166,7 +170,7 @@ Testing a single test:
 pytest tests/test_command.py -k 'test_digit_skipping'
 ```
 
-For future me, this is causing some momentary frustration. The module has to be installed before it'll be properly tested. Changes made to the file don't register for some reason:
+For future me, this is causing some momentary frustration. The module has to be installed before it'll be properly tested. Changes made to the file don't register for some reason. I'm sure this isn't how it's supposed to be done:
 
 ```
 pip install .
@@ -174,7 +178,18 @@ pip install .
 
 # Processing a directory of JSON
 
+This is where the actual translation took place. Nothing fancy. Just a `bash` command to execute over a directory of structured Bible data obtained from [here](https://github.com/aruljohn/Bible-kjv).
+
 ```
 mkdir out/data
 find data -name "*.json" -type f -exec sh -c 'en_to_fr --json {} > out/{}' \;
 ```
+
+The original output is preserved in the `out/` directory. No doubt, translating antiquated English into modern languages is a little weird.
+
+Execution times using an Nvidia GeForce RTX GPU:
+
+- French - 10.5 hours
+- German - 8.5 hours
+- Russian - 33 hours
+
