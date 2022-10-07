@@ -21,13 +21,42 @@ def suppress_stdout_stderr():
 #en2fr = Null
 with suppress_stdout_stderr():
   from fairseq.models.transformer import TransformerModel
+  #
+  # This is all pre-wired for translating French
+  #
   en2fr = TransformerModel.from_pretrained(
+    #
+    # French (default)
+    #
     './models/nm-translation/wmt14.en-fr.joined-dict.transformer/',
     checkpoint_file='model.pt',
-    # What is this?
-    #data_name_or_path='data-bin/wmt14_en_fr_full',
     bpe='subword_nmt',
     bpe_codes='bpecodes'
+
+    #
+    # German
+    #
+    #'./models/nm-translation/wmt16.en-de.joined-dict.transformer/',
+    #checkpoint_file='model.pt',
+    #bpe='subword_nmt',
+    #bpe_codes='bpecodes'
+
+    #
+    # Russian
+    #
+    #'./models/nm-translation/wmt19.en-ru.ensemble/',
+    #checkpoint_file='model1.pt:model2.pt:model3.pt:model4.pt',
+    #tokenizer='moses',
+    #bpe='fastbpe',
+    #bpe_codes='bpecodes'
+
+    #
+    # What is this?
+    #
+    # It's in the provided project examples, but it doesn't seem to affect
+    # anything
+    #
+    #data_name_or_path='data-bin/wmt14_en_fr_full',
   )
 
 
